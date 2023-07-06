@@ -1,0 +1,141 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 15px;
+    text-align: center;
+}
+
+input {
+    margin: 0px;
+    width: 100%;
+    padding: 5px 7px 5px 12px;
+    border-radius: 4px;
+    font-family: "Proxima Nova", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    box-shadow: none;
+    transition: all 0.15s ease-in-out 0s;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 1px;
+    color: rgb(47, 66, 108);
+    visibility: visible;
+    opacity: 1;
+    background-color: rgb(245, 246, 248);
+    border-color: transparent;
+}
+
+input.error {
+    background-color: rgb(253, 237, 237);
+    border-color: rgb(235, 50, 50);
+}
+
+.label {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    display: inline;
+    color: rgb(47, 66, 108);
+    font-family: "Proxima Nova", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.total {
+    font-size: 14px;
+}
+
+button {
+    border: 1px solid rgba(59, 97, 235, 0.2);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+    user-select: none;
+    pointer-events: all;
+    background-color: transparent;
+    font-family: "Proxima Nova", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: none;
+    min-width: max-content;
+    border-radius: 40px;
+    padding: 0px 16px;
+    height: 32px;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(56, 95, 235);
+}
+
+button:hover {
+    color: rgb(56, 95, 235);
+    border-color: rgb(56, 95, 235);
+    background-color: transparent;
+}
+
+button:disabled {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    box-sizing: border-box;
+    user-select: none;
+    pointer-events: none;
+    font-family: "Proxima Nova", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: none;
+    min-width: max-content;
+    border-radius: 40px;
+    padding: 0px 16px;
+    height: 32px;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(197, 202, 214);
+    border: none;
+}
+
+#click-it {
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 220px;
+    margin: 12px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+h1.label {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+h2.label {
+    font-size: 18px;
+    font-weight: 500;
+}

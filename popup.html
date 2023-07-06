@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lazy click</title>
+  </head>
+  <link rel="stylesheet" href="popup.css"/>
+  <body>
+  <div class="container">
+    <h1 class="label">Hilan Lazy click</h1>
+    <h2 class="label">Fill the values</h2>
+
+    <div class="item">
+      <span class="label">Start: HH:mm</span>
+      <input id="lazy-click-start" name="start" value="09:00" type="text" placeholder="HH:mm" pattern="^(24:00)|((0[1-9]|1\d|2[0-3]):([0-5]\d))|(00:(0[1-9]|[1-5]\d))$">
+
+    </div>
+
+    <div class="item">
+      <span class="label">End: HH:mm</span>
+      <input id="lazy-click-end"  name="end" value="08:00" type="text" placeholder="HH:mm" pattern="^(24:00)|((0[1-9]|1\d|2[0-3]):([0-5]\d))|(00:(0[1-9]|[1-5]\d))$">
+
+    </div>
+    <div class="item" >
+      <span class="label total" id="lazy-click-total"></span>
+
+    </div>
+
+    <button id="click-it" class="outlined">Fill in</button>
+
+  </div>
+
+
+  <script src="popup.js"></script>
+
+  </body>
+</html>
