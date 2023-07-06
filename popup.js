@@ -85,7 +85,6 @@ clickIt.addEventListener("click", async (e) => {
   chrome.storage.sync.set({
     startValue: start.value,
     endValue: end.value,
-    clickIt: clickIt
   });
 
   let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
@@ -102,8 +101,7 @@ function applyData() {
     chrome.storage.sync.get([
     'startValue',
     'endValue',
-     'clickIt'
-  ], function({startValue, endValue, clickIt }) {
+  ], function({startValue, endValue }) {
 
       function selectAll() {
         Array.prototype.slice.call(document.querySelectorAll("tr > .cDIES:nth-child(-n + 6)")).map(item => {
@@ -135,18 +133,15 @@ function applyData() {
         selectAll();
         setTimeout(() => {
           fillIn(start, end);
-          //clickIt.disabled = false;
         }, 2000)
 
       }
 
       if(window.location.href.includes("hilan.co.il/Hilannetv2/Attendance/calendarpage.aspx")) {
-        //clickIt.disabled = true;
         try{
           fillAll(startValue, endValue)
         } catch (e) {
           console.error("failed to fill the data ", e)
-          //clickIt.disabled = false;
         }
       } else {
           alert("You are not in hilan, you on: " + window.location.host + ". Please go to hilan Attendance page.")
