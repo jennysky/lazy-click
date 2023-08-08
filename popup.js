@@ -98,54 +98,77 @@ clickIt.addEventListener("click", async (e) => {
 
 
 function applyData() {
-    chrome.storage.sync.get([
+  chrome.storage.sync.get([
     'startValue',
     'endValue',
   ], function({startValue, endValue }) {
 
-      function selectAll() {
-        Array.prototype.slice.call(document.querySelectorAll("tr > .cDIES:nth-child(-n + 6)")).map(item => {
+    function selectAll() {
+      const availableItems = [];
+
+      const allItems = document.querySelectorAll("tr > .cDIES:nth-child(-n + 6)");
+      allItems.forEach((parent) => {
+        const paragraphs = parent.querySelectorAll('.cDM');
+        if(paragraphs.length > 0) {
+          const dateContent = paragraphs[0];
+
+          const isEmpty = dateContent.innerHTML.trim() === '' || dateContent.innerHTML.trim() === '&nbsp;';
+
+          if (isEmpty) {
+            availableItems.push(parent)
+          }
+        }
+
+      });
+
+      if(availableItems?.length > 0) {
+
+        Array.prototype.slice.call(availableItems).map(item => {
           item.click()
         });
 
         var selectDaysButton = document.querySelectorAll("input[name*=RefreshSelectedDays]")[0];
 
         selectDaysButton.click();
-      }
-
-
-      function fillIn(start, end) {
-        var startVal = start || "10:00";
-        var endVal = end || "19:00";
-        const blurEvent = new Event('blur');
-
-        Array.prototype.slice.call(document.querySelectorAll("input[name*=ManualEntry]")).map(item => {
-          item.value = startVal
-        });
-        Array.prototype.slice.call(document.querySelectorAll("input[name*=ManualExit]")).map(item => {
-          item.value = endVal
-          item.focus();
-          item.dispatchEvent(blurEvent);
-        });
-      }
-
-      function fillAll(start, end) {
-        selectAll();
-        setTimeout(() => {
-          fillIn(start, end);
-        }, 2000)
-
-      }
-
-      if(window.location.href.includes("hilan.co.il/Hilannetv2/Attendance/calendarpage.aspx")) {
-        try{
-          fillAll(startValue, endValue)
-        } catch (e) {
-          console.error("failed to fill the data ", e)
-        }
       } else {
-          alert("You are not in hilan, you on: " + window.location.host + ". Please go to hilan Attendance page.")
+        alert("No empty slots found")
       }
+
+    }
+
+
+    function fillIn(start, end) {
+      var startVal = start || "10:00";
+      var endVal = end || "19:00";
+      const blurEvent = new Event('blur');
+
+      Array.prototype.slice.call(document.querySelectorAll("input[name*=ManualEntry]")).map(item => {
+        item.value = startVal
+      });
+      Array.prototype.slice.call(document.querySelectorAll("input[name*=ManualExit]")).map(item => {
+        item.value = endVal
+        item.focus();
+        item.dispatchEvent(blurEvent);
+      });
+    }
+
+    function fillAll(start, end) {
+      selectAll();
+      setTimeout(() => {
+        fillIn(start, end);
+      }, 2000)
+
+    }
+
+    if(window.location.href.includes("hilan.co.il/Hilannetv2/Attendance/calendarpage.aspx")) {
+      try{
+        fillAll(startValue, endValue)
+      } catch (e) {
+        console.error("failed to fill the data ", e)
+      }
+    } else {
+      alert("You are not in hilan, you on: " + window.location.host + ". Please go to hilan Attendance page.")
+    }
   });
 
 }
