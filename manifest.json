@@ -2,7 +2,7 @@
   "name": "LazyClick",
   "description": "It allows you to fill attendance values on Hilan automatically for a month with just one click.",
   "manifest_version": 3,
-  "version": "1",
+  "version": "3",
   "background": {
     "service_worker": "background.js"
   },
@@ -10,5 +10,9 @@
   "action": {
     "default_popup": "popup.html",
     "default_icon": "logo.png"
+  },
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png"
   }
 }

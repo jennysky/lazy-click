@@ -124,7 +124,9 @@ function applyData() {
       if(availableItems?.length > 0) {
 
         Array.prototype.slice.call(availableItems).map(item => {
-          item.click()
+          if(!item.classList.contains("CSD")) {
+            item.click()
+          }
         });
 
         var selectDaysButton = document.querySelectorAll("input[name*=RefreshSelectedDays]")[0];
